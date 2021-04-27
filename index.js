@@ -7,13 +7,13 @@ class ezx750ups {
     }
 
     getVoltage(busNum=1){
-        let rawData = i2c.openSync(busNum).readWord(this.address, 0x2);
+        let rawData = i2c.openSync(busNum).readWordSync(this.address, 0x2);
         let data = this._readVoltage(rawData);
         return data;
     }
 
     getCapacity(busNum=1){
-        let rawData = i2c.openSync(busNum).readWord(this.address, 0x4);
+        let rawData = i2c.openSync(busNum).readWordSync(this.address, 0x4);
         let data = this._readVoltage(rawData);
         return data;
     }
@@ -37,3 +37,4 @@ class ezx750ups {
         return cap;
     }
 }
+module.exports = ezx750ups;
